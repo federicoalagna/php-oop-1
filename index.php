@@ -14,4 +14,17 @@ class Movie {
         $this->releaseYear = $releaseYear;
         $this->genre = $genre;
     }
+
+    // METODO
+    public function getMovieInfo() {
+        try {
+        
+            if(empty($this->title) || empty($this->director) || empty($this->releaseYear) || empty($this->genre)) {
+                throw new Exception("informazioni mancanti.");
+            }
+            return "Title: " . $this->title . ", Director: " . $this->director . ", Release Year: " . $this->releaseYear . ", Genre: " . $this->genre;
+        } catch (Exception $e) {
+            return "Errore: " . $e->getMessage();
+        }
+    }
 }

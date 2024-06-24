@@ -28,3 +28,11 @@ class Movie {
         }
     }
 }
+
+// OGGETTI ISTANZIATI
+$movie1 = new Movie("Interstellar", "Christopher Nolan", 2014, "Fantascienza");
+$movie2 = new Movie("Fight Club", "David Fincher", 1999, "Azione");
+
+echo $movie1->getMovieInfo() . "<br>";
+echo $movie2->getMovieInfo() . "<br>";
+

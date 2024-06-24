@@ -36,3 +36,7 @@ $movie2 = new Movie("Fight Club", "David Fincher", 1999, "Azione");
 echo $movie1->getMovieInfo() . "<br>";
 echo $movie2->getMovieInfo() . "<br>";
 
+// EXCEPTION 
+$movie3 = new Movie("", "Ari Aster", 2019, "Horror");
+echo $movie3->getMovieInfo() . "<br>";
+?>

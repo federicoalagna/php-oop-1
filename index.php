@@ -8,8 +8,10 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-
-                <h1 class="text-center mb-4">Movie List</h1>
+<div class="container mt-5">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="text-center mb-4">LISTA DEI FILM</h1>
                 <?php
 
                 // CLASSE GENERE
@@ -83,7 +85,7 @@
                             $genres = implode(', ', $genreNames) ?: 'N/A';
                             $actors = implode(', ', $actorNames) ?: 'N/A';
 
-                            return "Title: " . $this->title . ", Director: " . $this->director . ", Release Year: " . $this->releaseYear . ", Genres: " . $genres . ", Actors: " . $actors;
+                            return "Titolo: " . $this->title . ", Regista: " . $this->director . ", Pubblicazione: " . $this->releaseYear . ", Genere: " . $genres . ", Attori: " . $actors;
                         } catch (Exception $e) {
                             return "Errore: " . $e->getMessage();
                         }
@@ -93,7 +95,44 @@
                         return self::$totalMovies;
                     }
                 }
+                
 
+                // GENERI E ATTORI
+                $genre1 = new Genre("Fantascienza");
+                $genre2 = new Genre("Azione");
+                $genre3 = new Genre("Historical");
+
+                $actor1 = new Actor("Matthew", "McConaughey");
+                $actor2 = new Actor("Anne", "Hathaway");
+                $actor3 = new Actor("Brad", "Pitt");
+                $actor4 = new Actor("Edward", "Norton");
+
+                // ISTANZIAMENTO DI MOVIE
+                $movie1 = new Movie("Interstellar", "Christopher Nolan", 2014);
+                $movie1->addGenre($genre1);
+                $movie1->addActor($actor1);
+                $movie1->addActor($actor2);
+
+                $movie2 = new Movie("Fight Club", "David Fincher", 1999);
+                $movie2->addGenre($genre2);
+                $movie2->addActor($actor3);
+                $movie2->addActor($actor4);
+
+                // EXCEPTION
+                $movie3 = new Movie("", "Ari Aster", 2019);
+                $movie3->addGenre($genre3);
+                $movie3->addActor(new Actor("Florence", "Pugh"));
+
+                echo "<div class='card mb-4'><div class='card-body'>" . $movie1->getMovieInfo() . "</div></div>";
+                echo "<div class='card mb-4'><div class='card-body'>" . $movie2->getMovieInfo() . "</div></div>";
+                echo "<div class='card mb-4'><div class='card-body'>" . $movie3->getMovieInfo() . "</div></div>";
+
+                echo "<p class='text-center'>Film trovati: " . Movie::getTotalMovies() . "</p>";
                 ?>
+            </div>
+        </div>
+    </div>
+
+          
 </body>
 </html>

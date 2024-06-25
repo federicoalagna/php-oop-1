@@ -1,3 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHP OOP 1</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
 <?php
 
 class Actor {
@@ -49,7 +58,23 @@ class Movie {
         $this->title = $title;
         $this->director = $director;
         $this->releaseYear = $releaseYear;
-        $this->genre = $genre;
+ 
+    }
+
+    public function setGenres($genres) {
+    $this->genre = $genre;
+    }
+
+    public function addGenre(Genre $genre) {
+        $this->genres[] = $genre;
+    }
+
+    public function setActors($actors) {
+        $this->actors = $actors;
+    }
+
+    public function addActor(Actor $actor) {
+        $this->actors[] = $actor;
     }
 
     // METODO
@@ -77,3 +102,6 @@ echo $movie2->getMovieInfo() . "<br>";
 $movie3 = new Movie("", "Ari Aster", 2019, "Horror");
 echo $movie3->getMovieInfo() . "<br>";
 ?>
+</body>
+</html>
+

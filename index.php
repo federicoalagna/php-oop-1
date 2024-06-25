@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PHP OOP 1</title>
-  
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+   
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="style.css" rel="stylesheet">
 </head>
 <body>
 <div class="container mt-5">
         <div class="row">
             <div class="col-12">
-                <h1 class="text-center mb-4">LISTA DEI FILM</h1>
+                <h1 class="text-center mb-4 title">LISTA DEI FILM</h1>
                 <?php
 
                 // CLASSE GENERE
@@ -85,7 +86,11 @@
                             $genres = implode(', ', $genreNames) ?: 'N/A';
                             $actors = implode(', ', $actorNames) ?: 'N/A';
 
-                            return "Titolo: " . $this->title . ", Regista: " . $this->director . ", Pubblicazione: " . $this->releaseYear . ", Genere: " . $genres . ", Attori: " . $actors;
+                            return "<strong class='titolo'>Titolo:</strong>  " . $this->title . ", <br>
+                            <strong class='regista'>Regista:</strong> " . $this->director . ", <br>
+                            <strong class='anno'>Anno di uscita:</strong> " . $this->releaseYear . ", <br>
+                            <strong class='generi'>Generi:</strong> " . $genres . ", <br>
+                            <strong class='attori'>Attori:</strong> " . $actors;
                         } catch (Exception $e) {
                             return "Errore: " . $e->getMessage();
                         }
@@ -123,9 +128,9 @@
                 $movie3->addGenre($genre3);
                 $movie3->addActor(new Actor("Florence", "Pugh"));
 
-                echo "<div class='card mb-4'><div class='card-body'>" . $movie1->getMovieInfo() . "</div></div>";
-                echo "<div class='card mb-4'><div class='card-body'>" . $movie2->getMovieInfo() . "</div></div>";
-                echo "<div class='card mb-4'><div class='card-body'>" . $movie3->getMovieInfo() . "</div></div>";
+                echo "<div class='card mb-4 text-dark'><div class='card-body'>" . $movie1->getMovieInfo() . "</div></div>";
+                echo "<div class='card mb-4 text-dark'><div class='card-body'>" . $movie2->getMovieInfo() . "</div></div>";
+                echo "<div class='card mb-4 text-dark'><div class='card-body'>" . $movie3->getMovieInfo() . "</div></div>";
 
                 echo "<p class='text-center'>Film trovati: " . Movie::getTotalMovies() . "</p>";
                 ?>
@@ -133,6 +138,6 @@
         </div>
     </div>
 
-          
+
 </body>
 </html>

@@ -48,15 +48,17 @@
                     public $title;
                     public $director;
                     public $releaseYear;
+                    public $cover;
                     private $genres = [];
                     private $actors = [];
 
                     public static $totalMovies = 0;
 
-                    public function __construct($title, $director, $releaseYear) {
+                    public function __construct($title, $director, $releaseYear, $cover) {
                         $this->title = $title;
                         $this->director = $director;
                         $this->releaseYear = $releaseYear;
+                        $this->cover = $cover;
                         self::$totalMovies++;
                     }
 
@@ -86,13 +88,14 @@
                             $genres = implode(', ', $genreNames) ?: 'N/A';
                             $actors = implode(', ', $actorNames) ?: 'N/A';
 
-                            return "<strong class='titolo'>Titolo:</strong>  " . $this->title . ", <br>
-                            <strong class='regista'>Regista:</strong> " . $this->director . ", <br>
-                            <strong class='anno'>Anno di uscita:</strong> " . $this->releaseYear . ", <br>
-                            <strong class='generi'>Generi:</strong> " . $genres . ", <br>
-                            <strong class='attori'>Attori:</strong> " . $actors;
+                            return "<img src='" . $this->cover . "' alt='Cover image' class='cover' /> <br>
+                            <strong class='titolo'>TITOLO:</strong>  " . $this->title . ", <br>
+                            <strong class='regista'>REGISTA:</strong> " . $this->director . ", <br>
+                            <strong class='anno'>PUBBLICAZIONE:</strong> " . $this->releaseYear . ", <br>
+                            <strong class='generi'>GENERE:</strong> " . $genres . ", <br>
+                            <strong class='attori'>CAST:</strong> " . $actors;
                         } catch (Exception $e) {
-                            return "Errore: " . $e->getMessage();
+                            return   "Errore: " . $e->getMessage();
                         }
                     }
 
@@ -113,24 +116,24 @@
                 $actor4 = new Actor("Edward", "Norton");
 
                 // ISTANZIAMENTO DI MOVIE
-                $movie1 = new Movie("Interstellar", "Christopher Nolan", 2014);
+                $movie1 = new Movie("Interstellar", "Christopher Nolan", 2014, "https://m.media-amazon.com/images/I/71thymE6lwL._AC_UF1000,1000_QL80_.jpg" );
                 $movie1->addGenre($genre1);
                 $movie1->addActor($actor1);
                 $movie1->addActor($actor2);
 
-                $movie2 = new Movie("Fight Club", "David Fincher", 1999);
+                $movie2 = new Movie("Fight Club", "David Fincher", 1999, "https://m.media-amazon.com/images/I/61IgtYrLF5L._AC_UF1000,1000_QL80_.jpg");
                 $movie2->addGenre($genre2);
                 $movie2->addActor($actor3);
                 $movie2->addActor($actor4);
 
                 // EXCEPTION
-                $movie3 = new Movie("", "Ari Aster", 2019);
+                $movie3 = new Movie("", "Ari Aster", 2019, "https://pad.mymovies.it/filmclub/2019/02/152/locandinapg1.jpg");
                 $movie3->addGenre($genre3);
                 $movie3->addActor(new Actor("Florence", "Pugh"));
 
-                echo "<div class='card mb-4 text-dark'><div class='card-body'>" . $movie1->getMovieInfo() . "</div></div>";
-                echo "<div class='card mb-4 text-dark'><div class='card-body'>" . $movie2->getMovieInfo() . "</div></div>";
-                echo "<div class='card mb-4 text-dark'><div class='card-body'>" . $movie3->getMovieInfo() . "</div></div>";
+                echo "<div class='card mb-4 text-white bg-card'><div class='card-body'>" . $movie1->getMovieInfo() . "</div></div>";
+                echo "<div class='card mb-4 text-white bg-card'><div class='card-body'>" . $movie2->getMovieInfo() . "</div></div>";
+                echo "<div class='card mb-4 text-white bg-card'><div class='card-body'>" . $movie3->getMovieInfo() . "</div></div>";
 
                 echo "<p class='text-center'>Film trovati: " . Movie::getTotalMovies() . "</p>";
                 ?>

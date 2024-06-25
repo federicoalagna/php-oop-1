@@ -1,4 +1,41 @@
 <?php
+
+class Actor {
+
+    // VARIABILI
+    public $firstName;
+    public $lastName;
+
+
+    // COSTRUTTORE
+    public function __construct($firstName, $lastName) {
+        $this->firstName = $firstName;
+        $this->lastName = $lastName;
+    }
+
+    // METODO
+    public function getFullName() {
+        return $this->firstName . ' ' . $this->lastName;
+    }
+}
+
+class Genre {
+
+    // VARIABILI
+    public $name;
+
+    // COSTRUTTORE
+    public function __construct($name) {
+        $this->name = $name;
+    }
+
+    // METODO
+    public function getName() {
+        return $this->name;
+    }
+}
+
+
 class Movie {
 
     // VARIABILI
